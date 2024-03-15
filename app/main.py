@@ -6,7 +6,6 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers.auth import auth
 from app.routers.todos import todos
 from app.utilities.logger import logger
 
@@ -59,11 +58,11 @@ async def process_time_log_middleware(request: Request, call_next: F) -> Respons
     return response
 
 
-app.include_router(
-    auth.router,
-    prefix="/v1/auth",
-    tags=["auth"],
-)
+# app.include_router(
+#     auth.router,
+#     prefix="/v1/auth",
+#     tags=["auth"],
+# )
 
 app.include_router(
     todos.router,
