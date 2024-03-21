@@ -10,10 +10,11 @@ COPY --from=requirements-stage /requirements.txt /requirements.txt
 COPY ./pyproject.toml ./gunicorn_conf.py /
 COPY ./app /app
 
+
 RUN python3 -m pip install --no-cache-dir --upgrade -r requirements.txt
 
 RUN mkdir -p /tmp/shm && mkdir /.local
-
+WORKDIR /app
 ENV PORT 8000
 EXPOSE 8000
 
