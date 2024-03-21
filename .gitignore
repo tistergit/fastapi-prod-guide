@@ -12,3 +12,4 @@ coverage*
 .pytest_cache
 htmlcov
 test-report.xml
+poetry-installer-*.log

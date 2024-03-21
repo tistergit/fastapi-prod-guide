@@ -4,8 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.utilities.logger import logger
 from app.utilities.mdb import get_db_session
 
-from .models import Users
-from .schemas import NotFoundException, UserModel
+from app.routers.crossfit.models import Users
+from app.routers.crossfit.schemas import NotFoundException, UserModel
 
 router = APIRouter()
 
