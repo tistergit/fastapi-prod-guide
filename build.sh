@@ -1,0 +1,1 @@
+docker compose build --build-arg HTTPS_PROXY=http://192.168.8.250:7890
