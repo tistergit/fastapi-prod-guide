@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers.todos import todos
+from app.routers.crossfit import crossfit
 from app.utilities.logger import logger
 
 description = f"""
@@ -68,6 +69,12 @@ app.include_router(
     todos.router,
     prefix="/v1/todos",
     tags=["todos"],
+)
+
+app.include_router(
+    crossfit.router,
+    prefix="/v1/crossfit",
+    tags=["crossfit"],
 )
 
 
