@@ -4,6 +4,8 @@ services:
   webapp:
     build: ./
     image: webapp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: always
     ports:
       - 8000:8000

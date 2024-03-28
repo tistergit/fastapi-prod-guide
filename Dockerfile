@@ -18,4 +18,4 @@ WORKDIR /app
 ENV PORT 8000
 EXPOSE 8000
 
-ENTRYPOINT ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "gunicorn_conf.py", "app.main:app"]
+ENTRYPOINT ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "-c", "../gunicorn_conf.py", "app.main:app"]
