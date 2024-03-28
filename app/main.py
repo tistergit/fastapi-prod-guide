@@ -6,8 +6,9 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers.todos import todos
 from app.routers.crossfit import crossfit
+from app.routers.todos import todos
+from app.utilities.httpurl_middleware import HttpUrlRedirectMiddleware
 from app.utilities.logger import logger
 
 description = f"""
@@ -35,6 +36,8 @@ app.add_middleware(
     ],
 )
 
+app.add_middleware(HttpUrlRedirectMiddleware)
+
 F = TypeVar("F", bound=Callable[..., Any])
 
 
@@ -57,6 +60,7 @@ async def process_time_log_middleware(request: Request, call_next: F) -> Respons
     )
 
     return response
+
 
 
 # app.include_router(
