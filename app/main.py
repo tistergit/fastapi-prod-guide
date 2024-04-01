@@ -6,7 +6,7 @@ from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers.crossfit import crossfit
+from app.routers.pet import pet
 from app.routers.todos import todos
 from app.utilities.httpurl_middleware import HttpUrlRedirectMiddleware
 from app.utilities.logger import logger
@@ -76,7 +76,7 @@ app.include_router(
 )
 
 app.include_router(
-    crossfit.router,
+    pet.router,
     prefix="/v1/crossfit",
     tags=["crossfit"],
 )

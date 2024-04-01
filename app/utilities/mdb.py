@@ -6,14 +6,18 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
+from sqlalchemy.orm import DeclarativeBase
 
 from ..config import settings
 
-# DATABASE_URL = "mysql+aiomysql://root:root@localhost:3306/crossfit"
+engine = create_async_engine(settings.database_url)
+factory = async_sessionmaker(engine)
+
+class Base(DeclarativeBase):
+    pass
+
 
 async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
-    engine = create_async_engine(settings.database_url)
-    factory = async_sessionmaker(engine)
     async with factory() as session:
         try:
             yield session

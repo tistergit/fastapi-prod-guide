@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Path, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.routers.pet.models import PetUsers
+from app.routers.pet.schemas import NotFoundException, UserModel
 from app.utilities.logger import logger
 from app.utilities.mdb import get_db_session
-
-from app.routers.crossfit.models import Users
-from app.routers.crossfit.schemas import NotFoundException, UserModel
 
 router = APIRouter()
 
@@ -26,7 +25,7 @@ async def get_user(
     """
     Get a User
     """
-    u = await session.get(Users, id)
+    u = await session.get(PetUsers, id)
     logger.info("user : %s "  %  u)
     if u is None:
         raise HTTPException(
