@@ -4,8 +4,8 @@ from sqlalchemy.types import Boolean, DateTime, Integer, String
 from app.utilities.mdb import Base
 
 
-class Author(Base):
-    __tablename__ = "author5"
+class PetUsers(Base):
+    __tablename__ = "pet_users"
     
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(30))
